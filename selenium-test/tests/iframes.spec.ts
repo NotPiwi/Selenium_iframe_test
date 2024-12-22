@@ -13,6 +13,8 @@ test.describe('Interact with iframe and navigate to another page', () => {
 
     expect(await selenium.openNewTab()).toBeTruthy();
     expect(await selenium.navigateToClickTestAndClick()).toBeTruthy();
+
+    expect(await selenium.interactionWithNewTab()).toBeTruthy();
     
   });
 });

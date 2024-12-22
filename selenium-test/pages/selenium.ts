@@ -15,6 +15,8 @@ export class Selenium {
   private readonly submitBtn: Locator;
   private readonly expectedElement: Locator;
   private readonly expectedTitle: string;
+  private readonly alertBtn: Locator;
+  private readonly expectedTitle2: string;
   public newPage!: Page;
 
   constructor(page: Page) {
@@ -31,6 +33,9 @@ export class Selenium {
     this.submitBtn = this.iframe.locator(this.testData[3].locator![0]);
     this.expectedElement = this.iframe.locator(this.testData[4].locator![0]);
     this.expectedTitle = this.testData[7].expectedh1![0];
+    this.alertBtn = page.locator(this.testData[8].locator![0]);
+    this.expectedTitle2 = this.testData[8].expectedh1![0];
+
   }
 
   async navigate() {
@@ -46,7 +51,7 @@ export class Selenium {
 
   async submitInteraction() {
     await this.submitBtn.click();
-    await this.page.waitForTimeout(100);
+    await this.page.waitForTimeout(1000);//added time out 'cause it was failing 
     return await this.expectedElement.isVisible();
   }
 
@@ -60,7 +65,12 @@ export class Selenium {
   async navigateToClickTestAndClick() {
     await this.newPage.locator(this.testData[6].locator![0]).first().click();
     await this.newPage.locator(this.testData[7].locator![0]).click();
-    return await this.newPage.locator('h1', { hasText: this.expectedTitle }).isVisible()
+    return await this.newPage.locator('h1', { hasText: this.expectedTitle }).isVisible();
+  }
+
+  async interactionWithNewTab(){
+    await this.newPage.locator(this.testData[8].locator![0]).first().click();
+    return await this.newPage.locator('h1', { hasText: this.expectedTitle2 }).isVisible()
   }
 
 }
