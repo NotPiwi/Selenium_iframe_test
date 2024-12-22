@@ -68,6 +68,15 @@
             ],
             "expectedh1": "XHTML Might Be The Future",
             "expectedResult": "The text has been clicked successfully and is verified."
+        },
+        {
+            "stepId": "9",
+            "action": "",
+            "locator": [
+                "a[href='resultPage.html']"
+            ],
+            "expectedh1": "List of stuff",
+            "expectedResult": "The text has been clicked successfully and is verified."
         }
         ]
     }
