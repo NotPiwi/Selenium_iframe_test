@@ -1,0 +1,59 @@
+{
+    "testCase": {
+        "testCaseId": "TC001",
+        "description": "Interact with iframe and navigate to another page",
+        "steps": [
+        {
+            "stepId": "1",
+            "action": "Open the Selenium website",
+            "url": "https://www.selenium.dev/selenium/web",
+            "expectedResult": "The Selenium website opens successfully."
+        },
+        {
+            "stepId": "2",
+            "action": "Navigate to the iframes section",
+            "locator": [
+                "a[href='iframes.html']"
+            ],
+            "expectedResult": "The iframes section loads successfully."
+        },
+        {
+            "stepId": "3",
+            "action": "Switch to the iframe and interact with it",
+            "locator": [
+                "#email",
+                "#age"
+            ],
+            "userData": [
+                "alvarocheems@gmail.com",
+                "18"
+            ],
+            "interaction": "Fill the email and age fields",
+            "expectedResult": "The interaction within the iframe is completed successfully."
+        },
+        {
+            "stepId": "4",
+            "action": "Click a button inside the iframe to navigate to another page",
+            "locator": [
+                "#submitButton"
+            ],
+            "expectedResult": "The iframe navigates to another page."
+        },
+        {
+            "stepId": "5",
+            "action": "Verify navigation to another page",
+            "locator": [
+                "#greeting"
+            ],
+            "expectedResult": "The specified element confirms navigation to a new page."
+        },
+        {
+            "stepId": "6",
+            "action": "Open a new browser tab and explore another section of the website",
+            "actionDetails": "Perform browser command to open a new tab and navigate to another section of the Selenium website.",
+            "url": "https://www.selenium.dev/selenium/web/",
+            "expectedResult": "The new section of the website opens successfully and is verified."
+        }
+        ]
+    }
+}
