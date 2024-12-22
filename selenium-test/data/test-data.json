@@ -6,7 +6,7 @@
         {
             "stepId": "1",
             "action": "Open the Selenium website",
-            "url": "https://www.selenium.dev/selenium/web",
+            "url": "https://www.selenium.dev/selenium/web/",
             "expectedResult": "The Selenium website opens successfully."
         },
         {
@@ -53,6 +53,21 @@
             "actionDetails": "Perform browser command to open a new tab and navigate to another section of the Selenium website.",
             "url": "https://www.selenium.dev/selenium/web/",
             "expectedResult": "The new section of the website opens successfully and is verified."
+        },
+        {
+            "stepId": "7",
+            "action": "Navigate to the ClickTest section",
+            "locator": "a",
+            "expectedResult": "The ClickTest section opens successfully."
+        },
+        {
+            "stepId": "8",
+            "action": "Click the text",
+            "locator": [
+                "a[href='xhtmlTest.html']"
+            ],
+            "expectedh1": "XHTML Might Be The Future",
+            "expectedResult": "The text has been clicked successfully and is verified."
         }
         ]
     }

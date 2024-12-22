@@ -14,7 +14,8 @@ export class Selenium {
   private readonly age: string;
   private readonly submitBtn: Locator;
   private readonly expectedElement: Locator;
-  private readonly newURL: string;
+  private readonly expectedTitle: string;
+  public newPage!: Page;
 
   constructor(page: Page) {
     this.page = page;
@@ -29,7 +30,7 @@ export class Selenium {
     this.age = this.testData[2].userData![1];
     this.submitBtn = this.iframe.locator(this.testData[3].locator![0]);
     this.expectedElement = this.iframe.locator(this.testData[4].locator![0]);
-    this.newURL = this.testData[5].url!;
+    this.expectedTitle = this.testData[7].expectedh1![0];
   }
 
   async navigate() {
@@ -50,9 +51,16 @@ export class Selenium {
   }
 
   async openNewTab() {
-    const newPage = await this.context.newPage();
-    await newPage.waitForLoadState();
-    await newPage.goto(this.testData[5].url!);
-    return await newPage.url() === this.testData[5].url!;
+    this.newPage = await this.context.newPage();
+    await this.newPage.waitForLoadState();
+    await this.newPage.goto(this.baseURL);
+    return await this.newPage.url() === this.baseURL;
   }
+
+  async navigateToClickTestAndClick() {
+    await this.newPage.locator(this.testData[6].locator![0]).first().click();
+    await this.newPage.locator(this.testData[7].locator![0]).click();
+    return await this.newPage.locator('h1', { hasText: this.expectedTitle }).isVisible()
+  }
+
 }
