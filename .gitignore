@@ -1,2 +1,4 @@
 
 /selenium-test/node_modules
+/selenium-test/playwright-report
+/selenium-test/test-results
